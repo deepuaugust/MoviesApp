@@ -28,21 +28,12 @@ export const epic = (action$) =>
 
 @Injectable()
 export class MovieActions {
-  static GET_MOVIES = 'GET_MOVIES';
   static FETCH_LIST = 'FETCH_LIST';
   static FETCH_LIST_SUCCESS = 'FETCH_LIST_SUCCESS';
 
   fetchList() {
     return {
       type: MovieActions.FETCH_LIST
-    };
-  }
-
-  getMovies(name: string, description: string): AnyAction {
-    return {
-      type: MovieActions.GET_MOVIES,
-      name,
-      description
     };
   }
 }
