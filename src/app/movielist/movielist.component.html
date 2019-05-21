@@ -1,0 +1,32 @@
+<!--Navbar-->
+<nav class="navbar bg-dark default-color animated bounce">
+  <select [(ngModel)]="genreval" name="genreval" class="col-md-3 col-sm-3 col-lg-3 browser-default custom-select"
+    (change)="filterGenre(genreval)">
+    <option disabled value="Filter by genre" selected>Filter by genre</option>
+    <option *ngFor="let key of filtergenre" value="{{key}}">{{key}}</option>
+  </select>
+
+  <div class="col-md-6 col-sm-6 col-lg-6">
+    <button type="button" class="btn btn-info" (click)="clearFilter()">Clear Filter</button>
+  </div>
+
+  <div class="searchdiv active-cyan-4 mb-3 col-md-3 col-lg-3">
+    <input class="form-control" type="text" placeholder="Search" [(ngModel)]="searchText" name="search">
+  </div>
+</nav>
+<!--/.Navbar-->
+
+<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 moviecontainer">
+  <div class="row">
+    <div class="moviediv col-md-6 col-xs-12 col-sm-12 col-lg-6 animated rubberBand"
+      *ngFor="let movie of moviedata | filter: searchText" routerLink="/movie/{{movie.id}}">
+      <div class="imgdiv col-md-5 col-lg-5 col-sm-6 col-xs-6">
+        <img class="img-fluid" src={{movie.img}} />
+      </div>
+      <div class="contentdiv col-md-7 col-lg-7 col-xs-6 col-sm-6">
+        <h3><b>{{movie.name}}</b></h3>
+        <div>{{movie.description}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+$breakpoint-tablet: 768px;
+
+@media (max-width: $breakpoint-tablet) {
+  .moviediv {
+    text-align: center;
+  }
+
+  .contentdiv {
+    margin-top: 15px;
+  }
+}
+
+.movierow {
+  cursor: pointer;
+}
+
+.searchdiv {
+  margin-top: 20px;
+}
+
+div[class*='col-md'],
+div[class*='col-xs'],
+div[class*='col-sm'],
+div[class*='col-lg'] {
+  float: left;
+}
+
+.moviediv {
+  padding: 20px;
+  // margin: 55px;
+  // box-shadow: 5px 5px 5px 5px;
+  cursor: pointer;
+  border: 20px solid black;
+  background-color: papayawhip;
+}
+
+.moviecontainer {
+  background-color: azure;
+}
