@@ -17,7 +17,7 @@ import {
 export class MovieDetailsComponent implements OnInit {
   public id: number;
   errorMessage: string;
-  public moviedetail;
+  public moviedetail= { genres:'' };
   constructor(private route: ActivatedRoute, private movie: MovieService) {}
 
   ngOnInit() {
