@@ -16,16 +16,19 @@ import {
 })
 export class MovieDetailsComponent implements OnInit {
   public id: number;
+  errorMessage: string;
   public moviedetail;
   constructor(private route: ActivatedRoute, private movie: MovieService) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
-    this.movie.getJSON().subscribe(data => {
-      this.moviedetail = data.filter(x => {
-        return x.id == this.id;
-      });
-    });
+    this.getMovie(this.id);
+  }
+
+  getMovie(id: number) {
+    this.movie.getMovie(id).subscribe(
+      data => this.moviedetail = data,
+      error => this.errorMessage = <any>error);
   }
 
 }

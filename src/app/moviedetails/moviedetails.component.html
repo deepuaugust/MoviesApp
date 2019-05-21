@@ -1,15 +1,15 @@
 <div class="moviecontainer animated bounceInRight">
   <div class="title animated flash">
-    <h2><b><i>{{moviedetail[0].name}}</i></b></h2>
+    <h2><b><i>{{moviedetail.name}}</i></b></h2>
   </div>
   <div class="imagediv">
-    <img src="{{moviedetail[0].img}}" />
+    <img src="{{moviedetail.img}}" />
   </div>
   <div class="info">
-    <div class="lendiv"><b><i>Length</i></b> : {{moviedetail[0].length}}</div>
-    <div class="ratediv"><b><i>Rate</i></b> : {{moviedetail[0].rate}}/10</div>
+    <div class="lendiv"><b><i>Length</i></b> : {{moviedetail.length}}</div>
+    <div class="ratediv"><b><i>Rate</i></b> : {{moviedetail.rate}}/10</div>
     <div class="genrediv"><b><i>Genre</i></b> : <span
-        *ngFor="let gen of moviedetail[0].genres"><br>{{gen| titlecase}}</span></div>
-    <div class="descrdiv">{{moviedetail[0].description}}</div>
+        *ngFor="let gen of moviedetail.genres"><br>{{gen| titlecase}}</span></div>
+    <div class="descrdiv">{{moviedetail.description}}</div>
   </div>
 </div>
