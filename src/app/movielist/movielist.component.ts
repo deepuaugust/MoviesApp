@@ -1,10 +1,8 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  OnDestroy
 } from '@angular/core';
-import {
-  MovieService
-} from '../movie.service';
 import {
   GenreType
 } from '../movie.model';
@@ -25,7 +23,7 @@ import {
   templateUrl: './movielist.component.html',
   styleUrls: ['./movielist.component.scss']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent implements OnInit, OnDestroy {
   moviedata: IMovies[];
   subscription;
   public genres = GenreType;
@@ -33,7 +31,7 @@ export class MovieListComponent implements OnInit {
   public fullarr;
   public genreval: string;
   constructor(private ngRedux: NgRedux < IAppState > , private actions: MovieActions) {
-    this.subscription = ngRedux.select < IMovies[] > ('movies')
+    this.subscription = this.ngRedux.select < IMovies[] > ('movies')
       .subscribe(movies => this.moviedata = movies);
   }
 
@@ -47,6 +45,7 @@ export class MovieListComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.moviedata = [];
   }
 
   filterGenre(val) {
