@@ -24,7 +24,7 @@ import {
   styleUrls: ['./movielist.component.scss']
 })
 export class MovieListComponent implements OnInit, OnDestroy {
-  moviedata: IMovies[];
+  moviedata: IMovies[] = [];
   subscription;
   public genres = GenreType;
   public filtergenre;
