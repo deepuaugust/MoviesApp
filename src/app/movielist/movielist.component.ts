@@ -31,7 +31,7 @@ export class MovieListComponent implements OnInit, OnDestroy {
   public fullarr;
   public genreval: string;
   constructor(private ngRedux: NgRedux < IAppState > , private actions: MovieActions) {
-    this.subscription = this.ngRedux.select < IMovies[] > ('movies')
+    this.subscription = ngRedux.select < IMovies[] > ('movies')
       .subscribe(movies => this.moviedata = movies);
   }
 
@@ -40,12 +40,12 @@ export class MovieListComponent implements OnInit, OnDestroy {
     var keys = [];
     for (var key in this.genres) keys.push(key);
     this.filtergenre = keys;
-    this.ngRedux.dispatch(this.actions.fetchList());
+    if (this.moviedata.length == 0)
+      this.ngRedux.dispatch(this.actions.fetchList());
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.moviedata = [];
   }
 
   filterGenre(val) {
